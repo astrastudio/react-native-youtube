@@ -45,12 +45,14 @@ public class YouTubePlayerController implements
             mYouTubePlayer.setOnFullscreenListener(this);
             mYouTubePlayer.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI);
 
+
+
             mYouTubePlayer.setFullscreen(fullscreen);
             //mYouTubePlayer.setFullscreen(true);
             updateControls();
             mYouTubeView.playerViewDidBecomeReady();
             setLoaded(true);
-            if (videoId != null && isPlay()) {
+            if (videoId != null && videoId.trim().length() > 0 && isPlay()) {
                 startVideo();
                 //mYouTubePlayer.setFullscreen(false);
             }
@@ -287,6 +289,7 @@ public class YouTubePlayerController implements
     public void onFullscreen(boolean isFullscreen) {
         this.fullscreen = isFullscreen;
         mYouTubeView.didChangeFullscreen(isFullscreen);
+        updateControls();
     }
 
     public int getProgress() {

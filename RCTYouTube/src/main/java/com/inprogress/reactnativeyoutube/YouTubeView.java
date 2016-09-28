@@ -30,7 +30,21 @@ public class YouTubeView extends RelativeLayout {
 
 
     public void init() {
-        inflate(getContext(), R.layout.youtube_layout, this);
+        youTubePlayerFragment = (YouTubePlayerFragment) mMainActivity.getFragmentManager()
+                .findFragmentById(R.id.youtubeplayerfragment);
+
+        if (youTubePlayerFragment != null) {
+            try {
+                youTubePlayerFragment = (YouTubePlayerFragment) mMainActivity.getFragmentManager()
+                        .findFragmentById(R.id.youtubeplayerfragment);
+                FragmentTransaction ft = mMainActivity.getFragmentManager().beginTransaction();
+                ft.remove(youTubePlayerFragment);
+                ft.commit();
+            } catch (Exception e) {
+            }
+        } else {
+            inflate(getContext(), R.layout.youtube_layout, this);
+        }
 
         youTubePlayerFragment = (YouTubePlayerFragment) mMainActivity.getFragmentManager()
                 .findFragmentById(R.id.youtubeplayerfragment);
