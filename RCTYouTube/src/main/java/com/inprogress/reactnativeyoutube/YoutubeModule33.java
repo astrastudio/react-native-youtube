@@ -15,5 +15,8 @@ public class YoutubeModule33  extends ReactContextBaseJavaModule {
         final Activity activity = getCurrentActivity();
     }
 
-
+    @Override
+    public String getName() {
+        return "YouTubeModule";
+    }
 }
